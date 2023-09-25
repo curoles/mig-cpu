@@ -16,7 +16,7 @@ module TbTop #(localparam WIDTH=64)(
 );
 
     //INV #(WIDTH) _inv (.in (in1), .out(out_inv));
-    and2#(WIDTH) _and2(.in1(in1), .in2(in2), .out(out_and2));
+    And2#(WIDTH) _and2(.in1(in1), .in2(in2), .out(out_and2));
     //NAND2#(WIDTH) nand2_(.in1(in1), .in2(in2), .out(out_nand2));
     //MUX2#(WIDTH) mux2_(.in1(in1), .in2(in2), .sel(in3[0]), .out(out_mux2));
 

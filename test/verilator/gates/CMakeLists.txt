@@ -18,8 +18,8 @@ set(TEST_NAME TsmcGates)
 set(TB_FLIST -F ${CMAKE_SOURCE_DIR}/rtl/lib/gates/tsmc/gates.flist)
 include(${CMAKE_CURRENT_SOURCE_DIR}/../helper/simple_test.cmake)
 
-#set(TEST_NAME CmosGates)
-#set(TB_FLIST -F ${DARKCIRCUIT_SOURCE_DIR}/rtl/lib/gates/cmos/cmos.flist)
-#include(${DARKCIRCUIT_SOURCE_DIR}/tools/eda/verilator/simple_test.cmake)
+set(TEST_NAME CmosGates)
+set(TB_FLIST -F ${CMAKE_SOURCE_DIR}/rtl/lib/gates/cmos/gates.flist)
+include(${CMAKE_CURRENT_SOURCE_DIR}/../helper/simple_test.cmake)
 
 
