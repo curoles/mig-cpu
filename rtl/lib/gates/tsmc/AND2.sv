@@ -4,6 +4,6 @@ module AND2(
     output wire Y
 );
 
-   and and2(Y, A, B);
+   and _and2(Y, A, B);
 
 endmodule

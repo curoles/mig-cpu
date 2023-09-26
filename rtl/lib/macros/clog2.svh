@@ -1,3 +1,5 @@
+// Prefer to use $clog2(val)
+
 `ifndef CLOG2_SVH_INCLUDED_
 `define CLOG2_SVH_INCLUDED_
 

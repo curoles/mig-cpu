@@ -24,17 +24,17 @@ static void set_inputs(VTbTop& top)
 
 static bool check_outputs(const VTbTop& top)
 {
-    //if (top.out_inv != ~top.in1) return false;
+    if (top.out_inv != ~top.in1) return false;
 
     if (top.out_and2 != (top.in1 & top.in2)) {
-        printf("%lx != %lx\n", top.out_and2, (top.in1 & top.in2));
+        printf("And2: %lx != %lx\n", top.out_and2, (top.in1 & top.in2));
         return false;
     }
 
-    /*if (top.out_nand2 != ~(top.in1 & top.in2)) {
-        printf("%lx != %lx\n", top.out_nand2, ~(top.in1 & top.in2));
+    if (top.out_nand2 != ~(top.in1 & top.in2)) {
+        printf("Nand2: %lx != %lx\n", top.out_nand2, ~(top.in1 & top.in2));
         return false;
-    }*/
+    }
 
     /*if (uint64_t mux2 = (top.in3 & 0b1)? top.in1 : top.in2;
         top.out_mux2 != mux2) return false;*/
