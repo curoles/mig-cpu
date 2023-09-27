@@ -12,7 +12,9 @@ module TbTop #(
     input  wire [WIDTH-1:0] in2,
     input  wire             ci,
     output reg  [WIDTH-1:0] sum,
-    output reg              co
+    output reg              co,
+    output reg  [WIDTH-1:0] sum_aoi,
+    output reg              co_aoi
 );
 
     RippleCarryAdder#(.WIDTH(WIDTH))
@@ -23,4 +25,11 @@ module TbTop #(
                .sum(sum)
     );
 
+    RippleCarryAdder#(.WIDTH(WIDTH), 1)
+        _adder_aoi(.in1(in1),
+               .in2(in2),
+               .ci(ci),
+               .co(co_aoi),
+               .sum(sum_aoi)
+    );
 endmodule: TbTop

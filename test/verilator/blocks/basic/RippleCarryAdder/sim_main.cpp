@@ -32,6 +32,11 @@ static bool check_outputs(const VTbTop& top)
         return false;
     }
 
+    if (top.sum_aoi != sum) {
+        printf("HW %lx vs correct %lx\n", top.sum_aoi, sum);
+        return false;
+    }
+
     return true;
 }
 
