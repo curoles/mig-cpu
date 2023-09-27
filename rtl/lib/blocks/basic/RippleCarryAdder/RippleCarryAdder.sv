@@ -31,15 +31,7 @@ module RippleCarryAdder #(
     genvar i;
     generate
         for (i = 0; i < WIDTH; i++) begin : fa_gen
-            if (USE_AOI != 0) begin:
-                FullAdderAOI _fa(
-                    .in1(in1[i]),
-                    .in2(in2[i]),
-                    .ci (carry[i]),
-                    .sum(sum[i]),
-                    .co (carry[i+1])
-                );
-            end else begin:
+            //if (USE_AOI != 0) begin:
                 FullAdder _fa(
                     .in1(in1[i]),
                     .in2(in2[i]),
@@ -47,7 +39,15 @@ module RippleCarryAdder #(
                     .sum(sum[i]),
                     .co (carry[i+1])
                 );
-            end
+            /*end else begin:
+                FullAdder _fa(
+                    .in1(in1[i]),
+                    .in2(in2[i]),
+                    .ci (carry[i]),
+                    .sum(sum[i]),
+                    .co (carry[i+1])
+                );
+            end*/
         end
     endgenerate
 
