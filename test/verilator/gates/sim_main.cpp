@@ -36,7 +36,7 @@ static bool check_outputs(const VTbTop& top)
         return false;
     }
 
-    if (uint64_t mux2 = (top.in3 & 0b1)? top.in1 : top.in2; top.out_mux2 != mux2) {
+    if (uint64_t mux2 = (top.in3 & 0b1)? top.in2 : top.in1; top.out_mux2 != mux2) {
         return false;
     }
 

@@ -31,8 +31,8 @@ module Mux2 #(
 );
 
     wire [WIDTH-1:0] o1, o2;
-    Nand2#(WIDTH) _nand1(.out(o1), .in1(in1), .in2({WIDTH{sel}}));
-    Nand2#(WIDTH) _nand2(.out(o2), .in1(in2), .in2({WIDTH{~sel}}));
+    Nand2#(WIDTH) _nand1(.out(o1), .in1(in1), .in2({WIDTH{~sel}}));
+    Nand2#(WIDTH) _nand2(.out(o2), .in1(in2), .in2({WIDTH{sel}}));
     Nand2#(WIDTH) _nand3(.out(out), .in1(o1), .in2(o2));
 
 endmodule

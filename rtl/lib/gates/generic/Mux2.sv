@@ -4,9 +4,9 @@
  *
  * <pre>
  *           +-----+
- * in1 ------| 1   |
+ * in1 ------| 0   |
  *           | MUX |--- out   
- * in2 ------| 0   |
+ * in2 ------| 1   |
  *           +--+--+
  *         sel  |
  * </pre>
@@ -20,6 +20,6 @@ module Mux2 #(
     output wire [WIDTH-1:0]  out
 );
 
-    assign out = (sel == 1) ? in1 : in2;
+    assign out = (sel == 1) ? in2 : in1;
 
 endmodule

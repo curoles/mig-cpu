@@ -6,6 +6,6 @@ module MUX2(
     output wire Y
 );
 
-   or _or2(Y, A & S, B & ~S);
+   or _or2(Y, A & ~S, B & S);
 
 endmodule

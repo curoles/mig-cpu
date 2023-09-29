@@ -1,6 +1,6 @@
 set(VERILATOR_PARAMS_${TEST_NAME}
-    -sv
-    -O3 -Wall -Wno-lint --assert
+    -sv +systemverilogext+sv
+    -O3 -Wall -Wwarn-lint -Wwarn-style -Wno-UNUSED --assert
     --cc --compiler gcc
     --exe ${TB_MAIN_CPP} ${TB_CPP_FILES}
     --clk clk
@@ -19,7 +19,7 @@ add_custom_target(
     COMMAND make -C ${CMAKE_CURRENT_BINARY_DIR}/obj_dir_${TEST_NAME} -j -f V${TB_TOP}.mk V${TB_TOP}
 )
 
-add_test(NAME test_${TEST_NAME}
+add_test(NAME ${TEST_NAME}
     COMMAND ${CMAKE_CURRENT_BINARY_DIR}/obj_dir_${TEST_NAME}/V${TB_TOP}
 )
 
