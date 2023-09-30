@@ -1,2 +1,2 @@
 add_subdirectory(alu)
-#add_subdirectory(full)
+add_subdirectory(full)

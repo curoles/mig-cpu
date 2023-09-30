@@ -2,6 +2,9 @@
  * @brief
  * @author Igor Lesik 2023
  * @copyright Igor Lesik 2023
+ *
+ * https://github.com/riscv/riscv-v-spec
+ * https://github.com/riscv/riscv-v-spec/blob/master/v-spec.adoc#risc-v-v-vector-extension
  */
 
 /* Mig-U (micro) core.
