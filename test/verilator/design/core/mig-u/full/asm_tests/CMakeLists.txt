@@ -12,7 +12,7 @@ foreach(testname ${ASM_TESTS})
     set(tn ${testname})
     add_custom_command(OUTPUT ${tn}.out ${tn}.hex
         COMMAND ${COMPILE_TEST} ${CMAKE_CURRENT_SOURCE_DIR}/${testname}.S -o ${tn}.out
-        COMMAND ${RISCV_OBJCOPY} -O verilog --verilog-data-width=1 ${tn}.out ${tn}.hex
+        COMMAND ${RISCV_OBJCOPY} -O verilog --verilog-data-width=4 ${tn}.out ${tn}.hex
         DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${testname}.S
         #DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/../bare.S
         DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/bare.ld

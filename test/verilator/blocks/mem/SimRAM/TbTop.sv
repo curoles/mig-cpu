@@ -25,4 +25,12 @@ module TbTop #(
              .wr_en(wr_en), .wr_addr(wr_addr), .wr_data(wr_data), .rd_valid(rd_valid)
     );
 
+    initial begin
+        string memfile;
+        int read_ok;
+        $value$plusargs("MEMFILE=%s", memfile);
+        read_ok = _ram.load(memfile, 0);
+        assert(read_ok == 1) else $error("can't read file %s\n", memfile);
+    end
+
 endmodule: TbTop

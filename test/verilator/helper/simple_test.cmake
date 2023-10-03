@@ -20,7 +20,7 @@ add_custom_target(
 )
 
 add_test(NAME ${TEST_NAME}
-    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/obj_dir_${TEST_NAME}/V${TB_TOP}
+    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/obj_dir_${TEST_NAME}/V${TB_TOP} ${TEST_PLUS_ARGS}
 )
 
 # TODO

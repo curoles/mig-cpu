@@ -9,4 +9,7 @@ set(TB_FLIST
     -F ${CMAKE_SOURCE_DIR}/rtl/lib/blocks/blocks.flist
     -F ${CMAKE_SOURCE_DIR}/rtl/lib/gates/generic/gates.flist
 )
+
+set(TEST_PLUS_ARGS "+MEMFILE=${CMAKE_CURRENT_SOURCE_DIR}/test.hex")
+
 include(${CMAKE_CURRENT_SOURCE_DIR}/../../../helper/simple_test.cmake)

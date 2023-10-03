@@ -21,7 +21,7 @@ module MigUCore #(
 );
 
     initial begin
-    /*InsnSizeIs32:*/ assert(MigUCore.INSN_SIZE_BITS == 32)
+    InsnSizeIs32: assert(MigUCore.INSN_SIZE_BITS == 32)
         else $error("instruction size must be 32 bits");
     end
 

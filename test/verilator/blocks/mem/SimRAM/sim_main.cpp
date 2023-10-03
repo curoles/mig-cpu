@@ -14,7 +14,7 @@
 
 int main(int argc, char* argv[])
 {
-    printf("\n\nTest SimROM\n");
+    printf("\n\nTest SimRAM\n");
 
     Verilated::commandArgs(argc, argv);
 
@@ -25,6 +25,20 @@ int main(int argc, char* argv[])
 
     //top.filename.assign("mem.txt");
     //top.eval();
+
+    top.wr_en = 0;
+    top.rd_en = 1;
+
+    for (unsigned int i = 16; i < (16 + 4*3); ++i)
+    {
+        top.rd_addr = i;
+        tick();
+        //printf("%x: %08x\n", i, top.rd_data);
+        if (top.rd_data != i) {
+            printf("\n\nFAIL\n");
+            return 1;
+        }
+    }
 
     top.wr_en = 1;
     top.rd_en = 0;
