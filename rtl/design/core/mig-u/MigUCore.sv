@@ -7,13 +7,17 @@
  * https://github.com/riscv/riscv-v-spec/blob/master/v-spec.adoc#risc-v-v-vector-extension
  */
 
+localparam RISCV_INSN_SIZE = 4;
+localparam RISCV_INSN_WIDTH = RISCV_INSN_SIZE * 8;
+localparam RISCV_INSN_SIZE_BITS = $clog2(RISCV_INSN_SIZE);
+
 /* Mig-U (micro) core.
  *
  */
 module MigUCore #(
     parameter ADDR_WIDTH,
-    localparam INSN_SIZE = 4,
-    localparam INSN_SIZE_BITS = INSN_SIZE * 8
+    localparam INSN_SIZE = RISCV_INSN_SIZE,
+    localparam INSN_WIDTH = INSN_SIZE * 8
 )(
     input  wire                  clk,
     input  wire                  rst,
@@ -21,7 +25,7 @@ module MigUCore #(
 );
 
     initial begin
-    InsnSizeIs32: assert(MigUCore.INSN_SIZE_BITS == 32)
+    InsnSizeIs32: assert(MigUCore.INSN_WIDTH == 32)
         else $error("instruction size must be 32 bits");
     end
 

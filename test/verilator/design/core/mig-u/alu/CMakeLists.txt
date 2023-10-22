@@ -4,7 +4,7 @@ set(TB_TOP TbTop)
 set(TB_TOP_FILE ${CMAKE_CURRENT_SOURCE_DIR}/TbTop.sv)
 set(TB_MAIN_CPP ${CMAKE_CURRENT_SOURCE_DIR}/sim_main.cpp)
 
-set(TEST_NAME ALU)
+set(TEST_NAME MigUALU)
 set(TB_FLIST
     -y ${CMAKE_SOURCE_DIR}/rtl/lib/macros
     -F ${CMAKE_SOURCE_DIR}/rtl/lib/gates/generic/gates.flist

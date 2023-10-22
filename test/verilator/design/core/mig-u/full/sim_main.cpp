@@ -1,6 +1,6 @@
-/* Mig1 CPU C TB.
+/* MigU CPU C TB.
  *
- * Author: Igor Lesik 2020
+ * Author: Igor Lesik 2020-2023
  *
  */
 #include <cassert>
@@ -9,21 +9,22 @@
 #include <limits>
 #include <random>
 
-#include "svdpi.h"
+//#include "svdpi.h"
 
 #include "VTbTop.h"
-#include "VTbTop__Dpi.h"
-#include "eda/verilator/verilator_tick.h"
+//#include "VTbTop_TbTop.h"
+//#include "VTbTop__Dpi.h"
+#include "helper/verilator_tick.h"
 
-static uint32_t getPC(const VTbTop& top)
+/*static uint32_t getPC(const VTbTop& top)
 {
     svSetScope(svGetScopeFromName("TOP.TbTop.cpu_"));
     return top.public_get_PC();
-}
+}*/
 
 int main(int argc, char* argv[])
 {
-    printf("\n\nTest Mig1 CPU\n");
+    printf("\n\nTest MigU CPU\n");
 
     Verilated::commandArgs(argc, argv);
 
@@ -32,21 +33,21 @@ int main(int argc, char* argv[])
 
     Tick tick(top);
 
-    top.rst = 1;
-    top.rst_addr = 16;
-    for (unsigned int i = 0; i < 5; ++i) {tick();}
-    top.rst = 0;
+    //top.rst = 1;
+    //top.rst_addr = 16;
+    //for (unsigned int i = 0; i < 5; ++i) {tick();}
+    //top.rst = 0;
 
-    /*for (unsigned int i = 0; i < 10; ++i) {
-        tick();
-        printf("PC:%x\n", getPC(top));
-    }*/
+    ///*for (unsigned int i = 0; i < 10; ++i) {
+    //    tick();
+    //    printf("PC:%x\n", getPC(top));
+    //}*/
 
-    printf("Running. Press Ctrl-C to stop.\n");
-    while (!Verilated::gotFinish()) {
-        //top->eval();
-        tick();
-    }
+    //printf("Running. Press Ctrl-C to stop.\n");
+    //while (!Verilated::gotFinish()) {
+    //    //top->eval();
+    //    tick();
+    //}
 
     printf("\n\nSUCCESS\n");
 
