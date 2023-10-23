@@ -18,4 +18,9 @@ foreach(testname ${ASM_TESTS})
         DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/bare.ld
     )
     add_custom_target(migu_asm_test_${tn} ALL DEPENDS ${tn}.out)
+
+    set(TEST_PLUS_ARGS +MEMFILE=${CMAKE_CURRENT_BINARY_DIR}/${tn}.hex)
+    add_test(NAME ${TEST_NAME}_asm_test_${tn}
+        COMMAND ${CMAKE_CURRENT_BINARY_DIR}/../obj_dir_${TEST_NAME}/V${TB_TOP} ${TEST_PLUS_ARGS}
+    )
 endforeach()

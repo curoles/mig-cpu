@@ -37,4 +37,19 @@ module TbTop #(
         .rst_addr(rst_addr[ADDR_WIDTH-1:2])
     );
 
+    initial begin
+        string memfile;
+        int read_ok;
+        bit arg_memfile_exist;
+        arg_memfile_exist = $value$plusargs("MEMFILE=%s", memfile);
+        if (arg_memfile_exist) begin
+            $display("memory file:%s\n", memfile);
+        end else begin
+            $display("no memory file, exiting simulation\n");
+            $finish(0);
+        end
+        //read_ok = _ram.load(memfile, 0);
+        //assert(read_ok == 1) else $error("can't read file %s\n", memfile);
+    end
+
 endmodule: TbTop

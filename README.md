@@ -2,4 +2,4 @@
 
 Documentation files:
 
-- [RISC-V toolchain](test/verilog/design/core/mig-u/full/asm_tests/README.md)
+- [RISC-V toolchain](test/verilator/design/core/mig-u/full/README.md)

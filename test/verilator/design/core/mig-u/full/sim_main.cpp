@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
     VTbTop top;
 
     Tick tick(top);
-
+tick();tick();tick();tick();
     //top.rst = 1;
     //top.rst_addr = 16;
     //for (unsigned int i = 0; i < 5; ++i) {tick();}
