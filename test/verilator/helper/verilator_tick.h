@@ -28,3 +28,13 @@ struct Tick
 
     void operator()(){tick();}
 };
+
+template<typename T, unsigned int N>
+void print_binary(T n) {
+    for (T i = (T)1 << (N - 1); i > 0; i = i >> 1)
+        (n & i)? putchar('1'): putchar('0');
+}
+
+static inline void print_bin32(uint32_t n) {
+    print_binary<uint32_t, 32>(n);
+}

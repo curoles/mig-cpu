@@ -44,12 +44,12 @@ module TbTop #(
         arg_memfile_exist = $value$plusargs("MEMFILE=%s", memfile);
         if (arg_memfile_exist) begin
             $display("memory file:%s\n", memfile);
+            read_ok = _cpu._sram.load(memfile, 0);
+            assert(read_ok == 1) else $error("can't read file %s\n", memfile);
         end else begin
             $display("no memory file, exiting simulation\n");
             $finish(0);
         end
-        read_ok = _cpu._sram.load(memfile, 0);
-        assert(read_ok == 1) else $error("can't read file %s\n", memfile);
     end
 
 endmodule: TbTop
