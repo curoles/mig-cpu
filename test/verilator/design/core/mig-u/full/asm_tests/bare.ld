@@ -1,10 +1,10 @@
 SECTIONS
 {
  
-PROVIDE (__executable_start = SEGMENT_START("text-segment", 0x10000));
-. = SEGMENT_START("text-segment", 0x10000) + SIZEOF_HEADERS;
+#PROVIDE (__executable_start = SEGMENT_START("text-segment", 0x10000));
+#. = SEGMENT_START("text-segment", 0x10000) + SIZEOF_HEADERS;
  
-. = 0x11000;
+. = 0x10;
  
 .text : {*(.text)}
  

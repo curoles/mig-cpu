@@ -48,8 +48,8 @@ module TbTop #(
             $display("no memory file, exiting simulation\n");
             $finish(0);
         end
-        //read_ok = _ram.load(memfile, 0);
-        //assert(read_ok == 1) else $error("can't read file %s\n", memfile);
+        read_ok = _cpu._sram.load(memfile, 0);
+        assert(read_ok == 1) else $error("can't read file %s\n", memfile);
     end
 
 endmodule: TbTop
