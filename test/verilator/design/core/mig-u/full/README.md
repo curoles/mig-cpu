@@ -13,21 +13,20 @@ mkdir tools
 cd tools
 git clone https://github.com/riscv/riscv-gnu-toolchain
 mkdir riscv
-export PATH=$PATH:/home/<user>/tools/riscv/bin
+export PATH=$PATH:/home/$USER/tools/riscv/bin
 cd riscv-gnu-toolchain/
-./configure
---prefix=/home/<user>/tools/riscv
-make
+./configure --prefix=/home/$USER/tools/riscv
+make -j
 
 which riscv64-unknown-elf-gcc
 /home/<user>/tools/riscv/bin/riscv64-unknown-elf-gcc
 ```
 
-Note the size: `du -sh ~/tools/riscv-gnu-toolchain/ 8.2G
+Note the size: `du -sh ~/tools/riscv-gnu-toolchain/ 8.2G`
 
 To enable full chip tests that build test programs,
 provide path to the RISC-V toolchain, for example:
 
 ```
-build$ cmake -DRISCV=/home/<user>/tools/riscv ../mig-cpu/
+build$ cmake -DRISCV=/home/$USER/tools/riscv ../mig-cpu/
 ```
