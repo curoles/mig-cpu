@@ -1,3 +1,4 @@
 NextIP.sv
+InsnDecode.sv
 MigUAlu.sv
 MigUCore.sv

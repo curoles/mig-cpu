@@ -5,10 +5,10 @@
  *
  */
 
- module NextIP #(
+module NextIP #(
     parameter ADDR_WIDTH,
     parameter INSN_SIZE_BITS
- )(
+)(
     input  wire                               clk,
     input  wire                               rst,
     input  wire [ADDR_WIDTH-1:INSN_SIZE_BITS] rst_pc,
@@ -16,7 +16,7 @@
     input  wire [ADDR_WIDTH-1:INSN_SIZE_BITS] fetch_pc,
     output  reg                               next_pc_valid,
     output  reg [ADDR_WIDTH-1:INSN_SIZE_BITS] next_pc
- );
+);
     reg rst_delay1;
     wire [ADDR_WIDTH-1:INSN_SIZE_BITS] fetch_pc_plus1;
     wire addr_overflow;

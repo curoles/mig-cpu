@@ -70,4 +70,22 @@ module MigUCore #(
         public_get_PC = 32'({fetch_pc, 2'b00});
     endfunction
 
+    reg fetch_en_stage[2];
+    reg [ADDR_WIDTH-1:INSN_SIZE_BITS] fetch_pc_stage[2];
+
+    always @ (posedge clk)
+    begin
+        fetch_en_stage[0] <= fetch_en;
+        fetch_en_stage[1] <= fetch_en_stage[0];
+        fetch_pc_stage[0] <= fetch_pc;
+        fetch_pc_stage[1] <= fetch_pc_stage[0];
+    end
+
+    InsnDecode #(ADDR_WIDTH)
+    _decode(
+        .clk(clk), .rst(rst),
+        .fetch_en(fetch_en_stage[0]), .fetch_pc(fetch_pc_stage[0]),
+        .insn(sram_rd_data)
+    );
+
 endmodule: MigUCore
