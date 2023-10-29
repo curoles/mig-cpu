@@ -16,11 +16,11 @@
 //#include "VTbTop__Dpi.h"
 #include "helper/verilator_tick.h"
 
-/*static uint32_t getPC(const VTbTop& top)
+static uint32_t getPC(const VTbTop& top)
 {
-    svSetScope(svGetScopeFromName("TOP.TbTop.cpu_"));
+    svSetScope(svGetScopeFromName("TOP.TbTop._cpu"));
     return top.public_get_PC();
-}*/
+}
 
 int main(int argc, char* argv[])
 {
@@ -32,16 +32,22 @@ int main(int argc, char* argv[])
     VTbTop top;
 
     Tick tick(top);
-tick();tick();tick();tick();
-    //top.rst = 1;
-    //top.rst_addr = 16;
-    //for (unsigned int i = 0; i < 5; ++i) {tick();}
-    //top.rst = 0;
 
-    ///*for (unsigned int i = 0; i < 10; ++i) {
-    //    tick();
-    //    printf("PC:%x\n", getPC(top));
-    //}*/
+    top.rst = 1;
+    top.rst_addr = 16;
+    for (unsigned int i = 0; i < 5; ++i) {
+        tick();
+    }
+    top.rst = 0;
+
+    printf("Running. Press Ctrl-C to stop.\n");
+    for (unsigned int i = 0;
+        i < 10 and !Verilated::gotFinish();
+        ++i)
+    {
+        tick();
+        //printf("PC:%x\n", getPC(top));
+    }
 
     //printf("Running. Press Ctrl-C to stop.\n");
     //while (!Verilated::gotFinish()) {

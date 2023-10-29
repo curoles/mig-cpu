@@ -17,11 +17,12 @@ localparam RISCV_INSN_SIZE_BITS = $clog2(RISCV_INSN_SIZE);
 module MigUCore #(
     parameter ADDR_WIDTH,
     localparam INSN_SIZE = RISCV_INSN_SIZE,
-    localparam INSN_WIDTH = INSN_SIZE * 8
+    localparam INSN_WIDTH = INSN_SIZE * 8,
+    localparam INSN_SIZE_BITS = RISCV_INSN_SIZE_BITS
 )(
-    input  wire                  clk,
-    input  wire                  rst,
-    input  wire [ADDR_WIDTH-1:2] rst_addr
+    input  wire                               clk,
+    input  wire                               rst,
+    input  wire [ADDR_WIDTH-1:INSN_SIZE_BITS] rst_addr
 );
 
     initial begin
@@ -29,7 +30,10 @@ module MigUCore #(
         else $error("instruction size must be 32 bits");
     end
 
-    localparam MEM_ADDR_WIDTH = ADDR_WIDTH - RISCV_INSN_SIZE_BITS;
+    localparam MEM_ADDR_WIDTH = ADDR_WIDTH - INSN_SIZE_BITS;
+
+    wire [ADDR_WIDTH-1:INSN_SIZE_BITS] fetch_pc;
+    wire fetch_en;
 
     wire sram_rd_en;
     wire [MEM_ADDR_WIDTH-1:0] sram_rd_addr;
@@ -40,16 +44,30 @@ module MigUCore #(
     wire [INSN_WIDTH-1:0] sram_wr_data;
 
     SimRAM#(.DATA_SIZE_BYTES(INSN_SIZE), .ADDR_WIDTH(MEM_ADDR_WIDTH))
-        _sram(.clk(clk),
-            .rd_en(sram_rd_en), .rd_addr(sram_rd_addr),
-            .rd_valid(sram_rd_valid), .rd_data(sram_rd_data),
-            .wr_en(sram_wr_en), .wr_addr(sram_wr_addr), .wr_data(sram_wr_data)
+    _sram(.clk(clk),
+        .rd_en(sram_rd_en), .rd_addr(sram_rd_addr),
+        .rd_valid(sram_rd_valid), .rd_data(sram_rd_data),
+        .wr_en(sram_wr_en), .wr_addr(sram_wr_addr), .wr_data(sram_wr_data)
     );
 
-    assign sram_rd_en = 0;
+    assign sram_rd_en = fetch_en;
     assign sram_wr_en = 0;
-    assign sram_rd_addr = 0;
+    assign sram_rd_addr = fetch_pc;
     assign sram_wr_addr = 0;
     assign sram_wr_data = 0;
+
+    NextIP #(ADDR_WIDTH, INSN_SIZE_BITS)
+    _nextIP(
+        .clk(clk), .rst(rst), .rst_pc(rst_addr),
+        .fetch_en(fetch_en),
+        .fetch_pc(fetch_pc),
+        .next_pc_valid(fetch_en),
+        .next_pc(fetch_pc)
+    );
+
+    export "DPI-C" function public_get_PC;
+    function int unsigned public_get_PC();
+        public_get_PC = 32'({fetch_pc, 2'b00});
+    endfunction
 
 endmodule: MigUCore

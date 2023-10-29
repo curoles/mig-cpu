@@ -8,7 +8,7 @@
 //localparam CFG_ADDR_WIDTH = 16;
 
 module TbTop #(
-    localparam ADDR_WIDTH = 16
+    localparam ADDR_WIDTH = 18
 )(
     input wire clk,
     input wire rst,
