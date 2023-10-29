@@ -10,3 +10,5 @@ https://github.com/curoles/dark-circuit
 4. Igor. Explore LNS numbers.
 - https://www.mdpi.com/2227-7390/8/8/1208
 - https://engineering.fb.com/2018/11/08/ai-research/floating-point-math/
+
+5. Igor. Check https://five-embeddev.com/baremetal/startup_c/

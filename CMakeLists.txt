@@ -37,6 +37,7 @@ include_directories(.)
 enable_testing()
 
 add_subdirectory(test)
+add_subdirectory(tools)
 
 # Log CMake variables.
 MESSAGE( STATUS "CMAKE_C_COMPILER    : " ${CMAKE_C_COMPILER} )
