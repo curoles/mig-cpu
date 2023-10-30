@@ -9,6 +9,7 @@ set(TB_FLIST
     -y ${CMAKE_SOURCE_DIR}/rtl/lib/macros
     -F ${CMAKE_SOURCE_DIR}/rtl/lib/gates/generic/gates.flist
     -F ${CMAKE_SOURCE_DIR}/rtl/lib/blocks/blocks.flist
+    -F ${CMAKE_SOURCE_DIR}/rtl/lib/riscv/riscv.flist
     -F ${CMAKE_SOURCE_DIR}/rtl/design/core/mig-u/migu_core.flist
 )
 include(${CMAKE_SOURCE_DIR}/test/verilator/helper/simple_test.cmake)

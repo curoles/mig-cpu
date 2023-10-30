@@ -15,10 +15,6 @@ add_custom_command(OUTPUT ${MIGU_RISCV_OPCODES}
     WORKING_DIRECTORY ${riscv_opcodes_SOURCE_DIR}
     COMMAND ./parse.py -sverilog 'rv_i'
     COMMAND mv inst.sverilog ${MIGU_RISCV_OPCODES}
-    #COMMAND ${RISCV_OBJCOPY} -O verilog --verilog-data-width=4 ${tn}.out ${tn}.hex
-    #DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${testname}.S
-    #DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/../bare.S
-    #DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/bare.ld
 )
 add_custom_target(migu_riscv_decode ALL
     DEPENDS ${MIGU_RISCV_OPCODES}

@@ -12,3 +12,9 @@ https://github.com/curoles/dark-circuit
 - https://engineering.fb.com/2018/11/08/ai-research/floating-point-math/
 
 5. Igor. Check https://five-embeddev.com/baremetal/startup_c/
+
+6. Check:
+- https://github.com/srpoyrek/RISC-V/blob/master/instruction_decoder/src/instruction_decoder.v
+- https://github.com/ultraembedded/biriscv
+- https://chipmunklogic.com/digital-logic-design/designing-pequeno-risc-v-cpu-from-scratch-part-3-dealing-with-pipeline-hazards/
+- https://github.com/emilbiju/emil-risc-v
