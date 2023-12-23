@@ -43,4 +43,4 @@ module NextIP #(
             $time, {fetch_pc, 2'b00}, fetch_en, rst);
     end
 
- endmodule: NextIP
+endmodule: NextIP

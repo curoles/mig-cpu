@@ -13,7 +13,7 @@
 
 static bool test_incr4_eq5(VTbTop& top)
 {
-    printf("%lu: Testing 4+1==5...\n", sim_time());
+    printf("%" PRIu64 ": Testing 4+1==5...\n", sim_time());
 
     top.in = 4;
 
@@ -28,7 +28,7 @@ static bool test_incr4_eq5(VTbTop& top)
 
 static bool test_incr_all1_eq0(VTbTop& top)
 {
-    printf("%lu: Testing All1+1==0...\n", sim_time());
+    printf("%" PRIu64 ": Testing All1+1==0...\n", sim_time());
 
     top.in = 0b111'111'111;
 

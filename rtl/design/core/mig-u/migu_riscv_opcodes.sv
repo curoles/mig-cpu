@@ -46,6 +46,7 @@ package riscv_instr;
   localparam logic [11:0] CSR_VXSAT = 12'h9;
   localparam logic [11:0] CSR_VXRM = 12'ha;
   localparam logic [11:0] CSR_VCSR = 12'hf;
+  localparam logic [11:0] CSR_SSP = 12'h11;
   localparam logic [11:0] CSR_SEED = 12'h15;
   localparam logic [11:0] CSR_JVT = 12'h17;
   localparam logic [11:0] CSR_CYCLE = 12'hc00;

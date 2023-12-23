@@ -25,15 +25,15 @@ static bool check_outputs(const VTbTop& top)
 {
     uint64_t sum = top.in1 + top.in2;
 
-    //printf("HW %lx vs correct %lx\n", top.sum, sum);
+    //printf("HW %" PRIx64 " vs correct %" PRIx64 "\n", top.sum, sum);
 
     if (top.sum != sum) {
-        printf("HW %lx vs correct %lx\n", top.sum, sum);
+        printf("HW %" PRIx64 " vs correct %" PRIx64 "\n", top.sum, sum);
         return false;
     }
 
     if (top.sum_aoi != sum) {
-        printf("HW %lx vs correct %lx\n", top.sum_aoi, sum);
+        printf("HW %" PRIx64 " vs correct %" PRIx64 "\n", top.sum_aoi, sum);
         return false;
     }
 

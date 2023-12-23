@@ -45,4 +45,4 @@ module InsnDecode #(
         end
     end
 
- endmodule: InsnDecode
+endmodule: InsnDecode

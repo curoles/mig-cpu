@@ -27,12 +27,12 @@ static bool check_outputs(const VTbTop& top)
     if (top.out_inv != ~top.in1) return false;
 
     if (top.out_and2 != (top.in1 & top.in2)) {
-        printf("And2: %lx != %lx\n", top.out_and2, (top.in1 & top.in2));
+        printf("And2: %" PRIx64 " != %" PRIx64 "\n", top.out_and2, (top.in1 & top.in2));
         return false;
     }
 
     if (top.out_nand2 != ~(top.in1 & top.in2)) {
-        printf("Nand2: %lx != %lx\n", top.out_nand2, ~(top.in1 & top.in2));
+        printf("Nand2: %" PRIx64 " != %" PRIx64 "\n", top.out_nand2, ~(top.in1 & top.in2));
         return false;
     }
 

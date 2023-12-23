@@ -45,7 +45,7 @@ static bool check_outputs(const VTbTop& top)
     }
 
     if (top.out != correct_val) {
-        printf("HW %lx vs correct %lx, cmd=%u, in1=%lx, in2=%lx\n",
+        printf("HW %" PRIx64 " vs correct %" PRIx64 ", cmd=%u, in1=%" PRIx64 ", in2=%" PRIx64 "\n",
             top.out, correct_val, top.cmd, top.in1, top.in2);
         return false;
     }
