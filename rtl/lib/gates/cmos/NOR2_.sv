@@ -15,7 +15,7 @@
  *           ---+------------+---- gnd
  * </pre>
  */
-
+/* verilator lint_off DECLFILENAME */
 module NOR2 (
     input  wire in1,
     input  wire in2,
@@ -36,3 +36,4 @@ module NOR2 (
     pmos p2(out,  w_p,   in2);
 
 endmodule
+/* verilator lint_on DECLFILENAME */
