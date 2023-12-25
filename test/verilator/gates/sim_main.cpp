@@ -45,6 +45,12 @@ static bool check_outputs(const VTbTop& top)
         return false;
     }
 
+    if (top.out_maj3 != ((top.in1 & top.in2) | (top.in1 & top.in3) | (top.in2 & top.in3))) {
+        printf("Maj3: %" PRIx64 " != %" PRIx64 "\n", top.out_maj3,
+        (top.in1 & top.in2) | (top.in1 & top.in3) | (top.in2 & top.in3));
+        return false;
+    }
+
     return true;
 }
 

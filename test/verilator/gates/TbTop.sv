@@ -13,7 +13,8 @@ module TbTop #(localparam WIDTH=64)(
     output wire [WIDTH-1:0] out_and2,
     output wire [WIDTH-1:0] out_nand2,
     output wire [WIDTH-1:0] out_mux2,
-    output wire [WIDTH-1:0] out_nor2
+    output wire [WIDTH-1:0] out_nor2,
+    output wire [WIDTH-1:0] out_maj3
 );
 
     Inv  #(WIDTH) _inv ( .in (in1),            .out(out_inv));
@@ -21,5 +22,7 @@ module TbTop #(localparam WIDTH=64)(
     Nand2#(WIDTH) _nand2(.in1(in1), .in2(in2), .out(out_nand2));
     Mux2 #(WIDTH) _mux2 (.in1(in1), .in2(in2), .sel(in3[0]), .out(out_mux2));
     Nor2 #(WIDTH) _nor2 (.in1(in1), .in2(in2), .out(out_nor2));
+    Maj3 #(WIDTH) _maj3 (.in1(in1), .in2(in2), .in3(in3), .out(out_maj3));
+
 
 endmodule: TbTop
