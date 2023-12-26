@@ -2,3 +2,4 @@
 -F FullAdderAOI/FullAdderAOI.flist
 -F RippleCarryAdder/RippleCarryAdder.flist
 -F Incr/Incr.flist
+-F Decoder/Decoder.flist
