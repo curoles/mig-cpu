@@ -19,6 +19,9 @@ module Mux2 #(
     input  wire              sel,
     output wire [WIDTH-1:0]  out
 );
+    always_comb begin
+        assert(!$isunknown(sel)) else $error("%m: sel is X");
+    end
 
     assign out = (sel == 1) ? in2 : in1;
 

@@ -111,6 +111,7 @@ package riscv_instr;
   localparam logic [11:0] CSR_SIREG6 = 12'h157;
   localparam logic [11:0] CSR_STOPEI = 12'h15c;
   localparam logic [11:0] CSR_SATP = 12'h180;
+  localparam logic [11:0] CSR_SRMCFG = 12'h181;
   localparam logic [11:0] CSR_SCONTEXT = 12'h5a8;
   localparam logic [11:0] CSR_VSSTATUS = 12'h200;
   localparam logic [11:0] CSR_VSIE = 12'h204;
