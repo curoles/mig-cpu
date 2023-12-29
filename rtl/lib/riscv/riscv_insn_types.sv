@@ -6,25 +6,9 @@
  */
 package riscv_insn_types;
 
-import riscv::insn_t;
-export riscv::insn_t; // package chaining
+import riscv::*;
+export riscv::*; // package chaining
 
-import riscv::insn_info_t;
-export riscv::insn_info_t;
-
-/*
- *
- * `riscv_insn_type_t t; $display("%s", t.name())`
- */
-typedef enum bit [2:0] {
-    RISV_INSN_TYPE_UNDEF,
-    RISV_INSN_TYPE_R,
-    RISV_INSN_TYPE_I,
-    RISV_INSN_TYPE_S,
-    RISV_INSN_TYPE_B,
-    RISV_INSN_TYPE_U,
-    RISV_INSN_TYPE_J
-} riscv_insn_type_t;
 
 localparam logic [6:0] type_R_mask   = 7'b0110011;
 localparam logic [6:0] type_S_mask   = 7'b0100011;
@@ -81,6 +65,7 @@ function automatic void type_R_extract_fields(
     output insn_info_t info
 );
 begin
+    info.itype  = RISCV_INSN_TYPE_R;
     info.opcode = insn[6:0];
     info.rd     = insn[11:7];
     info.funct3 = insn[14:12];
