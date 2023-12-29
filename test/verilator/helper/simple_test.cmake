@@ -7,7 +7,7 @@ set(VERILATOR_PARAMS_${TEST_NAME}
     --Mdir obj_dir_${TEST_NAME}
     ${TB_FLIST}
     -CFLAGS "-I${MIGCPU_SOURCE_DIR}/test/verilator"
-    -CFLAGS "-O3 -march=native"
+    -CFLAGS "-O3 -march=native -Werror"
     -CFLAGS "-std=c++17"
     --top-module ${TB_TOP} ${TB_TOP_FILE}
     ${MIGCPU_SOURCE_DIR}/test/verilator/helper/verilator_tick.cpp
