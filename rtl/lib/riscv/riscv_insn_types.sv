@@ -6,13 +6,17 @@
  */
 package riscv_insn_types;
 
-typedef bit[31:0] insn_t;
+import riscv::insn_t;
+export riscv::insn_t; // package chaining
+
+import riscv::insn_info_t;
+export riscv::insn_info_t;
 
 /*
-*
-* `riscv_insn_type_t t; $display("%s", t.name())`
-*/
-typedef enum bit[2:0] {
+ *
+ * `riscv_insn_type_t t; $display("%s", t.name())`
+ */
+typedef enum bit [2:0] {
     RISV_INSN_TYPE_UNDEF,
     RISV_INSN_TYPE_R,
     RISV_INSN_TYPE_I,
@@ -74,20 +78,16 @@ endfunction
 
 function automatic void type_R_extract_fields(
     input insn_t insn,
-    output bit[6:0] opcode, 
-    output bit[4:0] rd, rs1, rs2,
-    output bit[2:0] funct3,
-    output bit[6:0] funct7,
-    output bit[31:0] imm
+    output insn_info_t info
 );
 begin
-    opcode = insn[6:0];
-    rd     = insn[11:7];
-    funct3 = insn[14:12];
-    rs1    = insn[19:15];
-    rs2    = insn[24:20];
-    funct7 = insn[31:25];
-    imm    = 0;//FIXME imm;
+    info.opcode = insn[6:0];
+    info.rd     = insn[11:7];
+    info.funct3 = insn[14:12];
+    info.rs1    = insn[19:15];
+    info.rs2    = insn[24:20];
+    info.funct7 = insn[31:25];
+    info.imm    = 0;//FIXME imm;
 end
 endfunction
 

@@ -6,30 +6,24 @@
 * http://www.sunburst-design.com/papers/CummingsDesignCon2005_SystemVerilog_ImplicitPorts.pdf
 *
 */
-//import riscv_insn_types::*;
 
 
-module RiscvInsnTypeDecode(
-    input  wire        clk,
-    input  wire [31:0] insn,
-    output  reg [6:0]  opcode,
-    output  reg [4:0]  rd, rs1, rs2,
-    output  reg [2:0]  funct3,
-    output  reg [6:0]  funct7,
-    output  reg [31:0] imm
-);
+module RiscvInsnTypeDecode
 import riscv_insn_types::*;
+(
+    input  wire                clk,
+    input  riscv::insn_t       insn,
+    output riscv::insn_info_t  info
+);
 
     always @ (posedge clk)
     begin
         if (is_type_R(insn)) begin
-            type_R_extract_fields(insn,
-                opcode, rd, rs1, rs2, funct3, funct7, imm);
+            type_R_extract_fields(.insn(insn), .info(info));
         end
         else begin
             //FIXME
-            type_R_extract_fields(insn,
-                opcode, rd, rs1, rs2, funct3, funct7, imm);
+            type_R_extract_fields(.insn(insn), .info(info));
         end
     end
 
