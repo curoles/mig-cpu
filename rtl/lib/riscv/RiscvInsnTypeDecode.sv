@@ -19,11 +19,27 @@ import riscv_insn_types::*;
     always @ (posedge clk)
     begin
         if (is_type_R(insn)) begin
-            type_R_extract_fields(.insn(insn), .info(info));
+            info <= type_R_extract_fields(.insn(insn));
+        end
+        else if (is_type_I(insn)) begin
+            info <= type_I_extract_fields(.insn(insn));
+        end
+        else if (is_type_S(insn)) begin
+            info <= type_S_extract_fields(.insn(insn));
+        end
+        else if (is_type_B(insn)) begin
+            info <= type_B_extract_fields(.insn(insn));
+        end
+        else if (is_type_U(insn)) begin
+            info <= type_U_extract_fields(.insn(insn));
+        end
+        else if (is_type_J(insn)) begin
+            info <= type_J_extract_fields(.insn(insn));
         end
         else begin
-            //FIXME
-            type_R_extract_fields(.insn(insn), .info(info));
+            //assert(0) else $error("%m: unreached");
+            //info <= '{default:0, itype:RISCV_INSN_TYPE_UNDEF};
+            info <= info;
         end
     end
 

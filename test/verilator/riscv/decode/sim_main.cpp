@@ -16,11 +16,15 @@ struct InsnTest {
     const char* desc;
     InsnType type;
     uint32_t rd, rs1, rs2;
+    uint32_t imm;
 };
 
 //https://luplab.gitlab.io/rvcodecjs
 static InsnTest insn_tests[] = {
-    {.insn = 0x003100b3, .desc = "add x1, x2, x3", .type = TYPE_R, .rd = 1, .rs1 = 2, .rs2 = 3},
+    {.insn = 0x003100b3, .desc = "add x1, x2, x3",
+     .type = TYPE_R, .rd = 1, .rs1 = 2, .rs2 = 3, .imm = 0},
+    {.insn = 0x07b10093, .desc = "addi x1, x2, 123",
+     .type = TYPE_I, .rd = 1, .rs1 = 2, .rs2 = 0, .imm = 123},
 };
 
 static constexpr
@@ -39,7 +43,7 @@ union InsnInfo {
     uint64_t val;
     struct __attribute__((packed)) {
         uint32_t itype : 3;
-        uint32_t imm : 16;
+        uint32_t imm : 20;
         uint32_t funct7 : 7;
         uint32_t funct3 : 3;
         uint32_t rs2 : 5;
@@ -58,9 +62,10 @@ static bool check_outputs(const VTbTop& top)
     InsnTest& test = insn_tests[test_id];
 
     printf("Test ID:%" PRIu32 " hex:%08" PRIx32
-        " op:%02x type:%u rd:%u rs1:%u rs2:%u desc:%s\n",
+        " op:%02x type:%u rd:%u rs1:%u rs2:%u imm:%u desc:%s\n",
         test_id, insn,
-        info.opcode, info.itype, info.rd, info.rs1, info.rs2,
+        info.opcode, info.itype,
+        info.rd, info.rs1, info.rs2, info.imm,
         test.desc);
 
     if (info.itype != test.type) {
@@ -68,6 +73,10 @@ static bool check_outputs(const VTbTop& top)
     }
 
     if (info.rd != test.rd || info.rs1 != test.rs1 || info.rs2 != test.rs2) {
+        return false;
+    }
+
+    if (info.imm != test.imm) {
         return false;
     }
 

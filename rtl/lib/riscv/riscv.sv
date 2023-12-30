@@ -27,7 +27,7 @@ typedef struct packed {
     logic [4:0] rd, rs1, rs2;
     logic [2:0] funct3;
     logic [6:0] funct7;
-    logic [15:0] imm; //FIXME seems wrong to carry around 32 bits
+    logic [19:0] imm;
     insn_type_t itype;
 } insn_info_t;
 
