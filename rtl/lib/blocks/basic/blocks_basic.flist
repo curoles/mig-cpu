@@ -1,7 +1,8 @@
--F FullAdder/FullAdder.flist
--F FullAdderAOI/FullAdderAOI.flist
--F RippleCarryAdder/RippleCarryAdder.flist
+-F adder/FullAdder/FullAdder.flist
+-F adder/FullAdderAOI/FullAdderAOI.flist
+-F adder/RippleCarryAdder/RippleCarryAdder.flist
+-F adder/CarrySaveAdder/CarrySaveAdder.flist
+-F adder/AdderComparator/AdderComparator.flist
 -F Incr/Incr.flist
 -F Decoder/Decoder.flist
 -F Encoder/Encoder.flist
--F AdderComparator/AdderComparator.flist

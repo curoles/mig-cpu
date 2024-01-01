@@ -1,16 +1,15 @@
-/*
+/**@file
+ * @brief Ripple-carry Adder
+ * @author Igor Lesik 2019-2023
  *
- *
- *
- *
- *
- *
- *
+ * References:
  * - [Fast Ripple-Carry Adders in Standard-Cell CMOS VLSI](https://www.computer.org/csdl/pds/api/csdl/proceedings/download-article/12OmNyfvpTj/pdf)
- * -[CMOS Binary Full Adder, A Survey of Possible Implementations](http://web.engr.uky.edu/~elias/projects/10.pdf)
- *
+ * - [CMOS Binary Full Adder, A Survey of Possible Implementations](http://web.engr.uky.edu/~elias/projects/10.pdf)
+ * - [Area, Delay and Power Comparison of Adder Topologies](https://aircconline.com/vlsics/V3N1/3112vlsics13.pdf)
  *
  */
+
+
 module RippleCarryAdder #(
     parameter WIDTH = 64,
     parameter USE_AOI = 0
