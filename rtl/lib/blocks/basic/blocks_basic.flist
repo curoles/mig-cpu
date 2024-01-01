@@ -6,3 +6,5 @@
 -F Incr/Incr.flist
 -F Decoder/Decoder.flist
 -F Encoder/Encoder.flist
+-F GatedClk/GatedClk.flist
+-F LiMemDff/LiMemDff.flist
