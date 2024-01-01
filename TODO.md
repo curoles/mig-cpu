@@ -18,3 +18,10 @@ https://github.com/curoles/dark-circuit
 - https://github.com/ultraembedded/biriscv
 - https://chipmunklogic.com/digital-logic-design/designing-pequeno-risc-v-cpu-from-scratch-part-3-dealing-with-pipeline-hazards/
 - https://github.com/emilbiju/emil-risc-v
+
+7. check
+  - https://course.ece.cmu.edu/~ece447/s15/lib/exe/fetch.php?media=goodrtl-parkin.pdf
+
+8. ArithShiftRight, https://course.ece.cmu.edu/~ece447/s15/lib/exe/fetch.php?media=goodrtl-parkin.pdf
+
+9. https://www.researchgate.net/publication/2630244_The_Power_of_Carry-Save_Addition

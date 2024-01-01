@@ -4,3 +4,4 @@
 -F Incr/Incr.flist
 -F Decoder/Decoder.flist
 -F Encoder/Encoder.flist
+-F AdderComparator/AdderComparator.flist
