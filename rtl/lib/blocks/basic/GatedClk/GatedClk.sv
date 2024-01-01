@@ -17,7 +17,9 @@
  * It also benificial to latch `enable` signal before AND-ing with `clk` signal.
  */
 
-module GatedClk #(parameter CLK_LO_WHEN_DISABLED=1)(
+module GatedClk #(
+    parameter CLK_LO_WHEN_DISABLED=1
+)(
     input  wire clk,
     input  wire enable,
     input  wire scan_enable,
@@ -28,25 +30,25 @@ module GatedClk #(parameter CLK_LO_WHEN_DISABLED=1)(
     
     reg enable_latch;
 
-generate
-if (CLK_LO_WHEN_DISABLED) begin: gen_clk_lo
-    always @(clk or enable_in)
-    begin
-        if (~clk)
-            enable_latch <= enable_in;
-    end
-    
-    assign gclk = clk & enable_latch;
+    generate
+    if (CLK_LO_WHEN_DISABLED) begin: gen_clk_lo
+        always @(clk or enable_in)
+        begin
+            if (~clk)
+                enable_latch <= enable_in;
+        end
+        
+        assign gclk = clk & enable_latch;
 
-end else begin: gen_clk_hi
-    always @(clk or enable_in)
-    begin
-        if (clk)
-            enable_latch <= enable_in;
+    end else begin: gen_clk_hi
+        always @(clk or enable_in)
+        begin
+            if (clk)
+                enable_latch <= enable_in;
+        end
+        
+        assign gclk = clk | ~enable_latch; // CLK HI
     end
-    
-    assign gclk = clk | ~enable_latch; // CLK HI
-end
-endgenerate
+    endgenerate
 
 endmodule: GatedClk
